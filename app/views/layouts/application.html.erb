@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
+    <% if !current_user %>
+      <button class="button"> <%= link_to 'Log in', login_path %> </button>
+      <button class="button"> <%= link_to 'Register', new_user_path %> </button>
+    <% else %>
+       <%= link_to "#{current_user.name}", user_path(current_user) %> <button class="button"> <%= link_to 'Logout', logout_path %> </button>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
