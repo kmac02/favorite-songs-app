@@ -1,24 +1,9 @@
 require 'rails_helper'
 
-feature "create new user" do
-  scenario "the homepage has a registration link" do
-    visit '/'
+feature "User visits our web app" do
 
-    click_link("Register")
-
-    expect(page).to have_current_path new_user_path
-  end
-
-  scenario "the homepage has a login link" do
-    visit '/'
-
-    click_link("Log in")
-
-    expect(page).to have_current_path login_path
-  end
-
-  scenario "the homepage has a log out link" do
-
+  scenario "User  registers, logs out, and logs in" do
+    # REGISTERING
     visit '/'
 
     click_link("Register")
@@ -32,14 +17,14 @@ feature "create new user" do
 
     click_button("Submit")
 
-
     expect(page).to have_current_path root_path
 
-
+    # LOGGING OUT
     click_link("Logout")
 
     expect(page).to have_current_path root_path
 
+    # LOGGING IN
     click_link('Log in')
 
     fill_in 'email', :with => 'purple@purple.org'
