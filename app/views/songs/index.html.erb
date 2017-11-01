@@ -2,6 +2,11 @@
 
 <div class="song-list">
   <% @songs.each do |song| %>
+    <%= form_tag("favorites#create") do %>
+      <p><%= hidden_field_tag :user_id, :value => current_user.id %></p>
+      <p><%= hidden_field_tag :song_id, :value => song.id %></p>
+      <p><%= submit_tag "Favorite" %></p>
+    <% end %>
     <h4 class="song-title"><%= song.title %></h4>
     <p class="song-artist"><%= song.artist %></p>
   <% end %>
